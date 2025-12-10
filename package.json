@@ -1,0 +1,26 @@
+{
+  "name": "cmpc-libros",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "cmpc-backend",
+    "cmpc-frontend"
+  ],
+  "scripts": {
+    "install": "npm install --workspaces",
+    "dev:backend": "npm run start:dev --workspace=cmpc-backend",
+    "dev:frontend": "npm run dev --workspace=cmpc-frontend",
+    "build:backend": "npm run build --workspace=cmpc-backend",
+    "build:frontend": "npm run build --workspace=cmpc-frontend",
+    "build": "npm run build:backend && npm run build:frontend",
+    "test:backend": "npm test --workspace=cmpc-backend",
+    "test:frontend": "npm test --workspace=cmpc-frontend",
+    "test": "npm run test:backend && npm run test:frontend",
+    "test:e2e": "npm run test:e2e --workspace=cmpc-backend",
+    "create:db": "npm run create:db --workspace=cmpc-backend",
+    "seed:users": "npm run seed:users --workspace=cmpc-backend",
+    "seed:books": "npm run seed:books --workspace=cmpc-backend",
+    "docker:up": "docker-compose up --build -d && npm run seed:users && npm run seed:books",
+    "docker:down": "docker-compose down"
+  }
+}
