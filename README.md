@@ -304,6 +304,59 @@ updatedAt       TIMESTAMP
 deletedAt       TIMESTAMP (soft delete)
 ```
 
+## Limitaciones del Diseño Actual
+
+### Estado Actual del Frontend
+
+La interfaz actual presenta un diseño minimalista básico que requiere mejoras significativas:
+
+**Problemas Identificados:**
+
+- Diseño visual poco atractivo y genérico
+- Falta de identidad visual corporativa
+- Componentes con estilos básicos sin personalización
+- Ausencia de elementos visuales modernos (gradientes, sombras, animaciones)
+- Tipografía limitada sin jerarquía visual clara
+- Paleta de colores muy restrictiva (solo grises y blancos)
+- Falta de feedback visual en interacciones
+- Diseño no optimizado para diferentes dispositivos
+
+**Mejoras Requeridas con Tailwind CSS:**
+
+1. **Sistema de Diseño Completo**
+   - Implementar paleta de colores corporativa de CMPC
+   - Definir sistema tipográfico con múltiples pesos y tamaños
+   - Crear componentes reutilizables con variantes
+   - Establecer espaciado consistente usando el sistema de Tailwind
+
+2. **Componentes Modernos**
+   - Cards con sombras y bordes redondeados
+   - Botones con estados hover, focus y active
+   - Inputs con mejor styling y validación visual
+   - Modales y overlays para mejor UX
+   - Loading states y skeletons
+
+3. **Interactividad Mejorada**
+   - Animaciones suaves con `transition-all duration-300`
+   - Hover effects en elementos interactivos
+   - Estados de loading con spinners
+   - Feedback visual para acciones (toast notifications)
+   - Micro-interacciones para mejorar la experiencia
+
+4. **Responsive Design**
+   - Layout adaptativo usando grid y flexbox de Tailwind
+   - Breakpoints para mobile, tablet y desktop
+   - Componentes que se adapten a diferentes tamaños
+   - Navegación mobile-friendly
+
+5. **Accesibilidad**
+   - Contraste de colores apropiado
+   - Focus states visibles
+   - Aria labels y roles
+   - Navegación por teclado
+
+**Prioridad**: Alta - El diseño actual no cumple con estándares modernos de UX/UI
+
 ## Manejo de Errores
 
 - **Frontend**: Mensajes de error amigables en UI

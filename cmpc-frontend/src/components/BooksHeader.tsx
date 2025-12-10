@@ -6,27 +6,33 @@ interface BooksHeaderProps {
 
 function BooksHeader({ onNewBook, onExport, onLogout }: BooksHeaderProps) {
   return (
-    <nav className="bg-white shadow-sm p-4 flex justify-between items-center">
-      <h1 className="text-xl font-bold">CMPC Libros</h1>
-      <div className="flex gap-4">
-        <button
-          onClick={onNewBook}
-          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-        >
-          Nuevo Libro
-        </button>
-        <button
-          onClick={onExport}
-          className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
-        >
-          Exportar CSV
-        </button>
-        <button
-          onClick={onLogout}
-          className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600"
-        >
-          Cerrar Sesión
-        </button>
+    <nav className="bg-white border-b border-gray-100 px-6 py-4">
+      <div className="flex justify-between items-center">
+        <div>
+          <h1 className="text-2xl font-light text-gray-900">CMPC</h1>
+          <p className="text-xs text-gray-500 mt-1">Sistema de Libros</p>
+        </div>
+        <div className="flex items-center gap-1">
+          <button
+            onClick={onNewBook}
+            className="px-4 py-2 text-sm font-medium text-gray-900 hover:bg-gray-50 transition-colors duration-200"
+          >
+            Nuevo
+          </button>
+          <button
+            onClick={onExport}
+            className="px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-colors duration-200"
+          >
+            Exportar
+          </button>
+          <div className="w-px h-4 bg-gray-200 mx-2" />
+          <button
+            onClick={onLogout}
+            className="px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-colors duration-200"
+          >
+            Salir
+          </button>
+        </div>
       </div>
     </nav>
   );

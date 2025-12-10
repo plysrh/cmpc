@@ -22,34 +22,36 @@ function BooksFilters({
   const handleDisponibilidadChange = useCallback((event: ChangeEvent<HTMLSelectElement>) => onAvailabilityChange(event.target.value), [onAvailabilityChange]);
 
   return (
-    <div className="bg-white p-4 rounded-lg shadow mb-4">
-      <div className="flex gap-3">
+    <div className="bg-white px-6 py-4 border-b border-gray-100">
+      <div className="flex items-center gap-4">
         <select
           value={searchField}
           onChange={handleSearchFieldChange}
-          className="border rounded px-3 py-2"
+          className="text-sm text-gray-600 bg-transparent border-0 focus:outline-none focus:ring-0"
         >
-          <option value="search">Todos los campos</option>
+          <option value="search">Todos</option>
           <option value="titulo">Título</option>
           <option value="autor">Autor</option>
           <option value="editorial">Editorial</option>
           <option value="genero">Género</option>
         </select>
-        <input
-          type="text"
-          placeholder="Buscar..."
-          value={searchInput}
-          onChange={handleSearchInputChange}
-          className="flex-1 border rounded px-3 py-2"
-        />
+        <div className="flex-1">
+          <input
+            type="text"
+            placeholder="Buscar libros..."
+            value={searchInput}
+            onChange={handleSearchInputChange}
+            className="w-full px-0 py-2 text-gray-900 placeholder-gray-400 border-0 border-b border-gray-200 focus:border-gray-900 focus:outline-none focus:ring-0 bg-transparent"
+          />
+        </div>
         <select
           value={availability}
           onChange={handleDisponibilidadChange}
-          className="border rounded px-3 py-2"
+          className="text-sm text-gray-600 bg-transparent border-0 focus:outline-none focus:ring-0"
         >
-          <option value="">Disponibilidad</option>
+          <option value="">Estado</option>
           <option value="true">Disponible</option>
-          <option value="false">No disponible</option>
+          <option value="false">Agotado</option>
         </select>
       </div>
     </div>

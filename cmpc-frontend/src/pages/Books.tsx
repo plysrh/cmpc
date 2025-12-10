@@ -164,21 +164,21 @@ function Books() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-white">
       <BooksHeader
         onNewBook={handleNew}
         onExport={handleExportCsv}
         onLogout={handleLogout}
       />
-      <div className="container mx-auto p-4">
-        <BooksFilters
-          searchField={searchField}
-          searchInput={searchInput}
-          availability={availability}
-          onSearchFieldChange={handleSearchField}
-          onSearchInputChange={setSearchInput}
-          onAvailabilityChange={handleAvailability}
-        />
+      <BooksFilters
+        searchField={searchField}
+        searchInput={searchInput}
+        availability={availability}
+        onSearchFieldChange={handleSearchField}
+        onSearchInputChange={setSearchInput}
+        onAvailabilityChange={handleAvailability}
+      />
+      <div className="px-6">
         <BooksList
           books={data.data}
           loading={loading}
@@ -187,11 +187,13 @@ function Books() {
           onSort={handleSort}
           onDelete={handleDelete}
         />
-        <Pagination
-          currentPage={page}
-          totalPages={data.metadata.totalPages}
-          onPageChange={setPage}
-        />
+        <div className="py-6">
+          <Pagination
+            currentPage={page}
+            totalPages={data.metadata.totalPages}
+            onPageChange={setPage}
+          />
+        </div>
       </div>
     </div>
   );

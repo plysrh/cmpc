@@ -19,40 +19,43 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="bg-white p-8 rounded-lg shadow-md w-96">
-        <h1 className="text-2xl font-bold mb-6 text-center">CMPC Libros</h1>
-        <form onSubmit={handleSubmit}>
-          <div className="mb-4">
-            <label htmlFor="email" className="block text-gray-700 mb-2">Email</label>
+    <div className="min-h-screen flex items-center justify-center bg-white">
+      <div className="w-full max-w-sm">
+        <div className="text-center mb-12">
+          <h1 className="text-3xl font-light text-gray-900 mb-2">CMPC</h1>
+          <p className="text-sm text-gray-500">Sistema de Libros</p>
+        </div>
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div>
             <input
               id="email"
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Email"
+              className="w-full px-0 py-3 text-gray-900 placeholder-gray-400 border-0 border-b border-gray-200 focus:border-gray-900 focus:outline-none focus:ring-0 bg-transparent"
               required
             />
           </div>
-          <div className="mb-6">
-            <label htmlFor="password" className="block text-gray-700 mb-2">Contraseña</label>
+          <div>
             <input
               id="password"
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Contraseña"
+              className="w-full px-0 py-3 text-gray-900 placeholder-gray-400 border-0 border-b border-gray-200 focus:border-gray-900 focus:outline-none focus:ring-0 bg-transparent"
               required
             />
           </div>
           {error && (
-            <div className="mb-4 p-3 bg-red-100 text-red-700 rounded-lg">
+            <div className="text-sm text-red-600">
               {error}
             </div>
           )}
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition"
+            className="w-full py-3 text-sm font-medium text-white bg-gray-900 hover:bg-gray-800 transition-colors duration-200"
           >
             Iniciar Sesión
           </button>

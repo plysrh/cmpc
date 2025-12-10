@@ -23,58 +23,63 @@ function BooksList({ books, loading, sortBy, sortOrder, onSort, onDelete }: Book
   };
 
   return (
-    <div className="bg-white rounded-lg shadow relative">
+    <div className="bg-white relative">
       {loading && (
-        <div className="absolute inset-0 bg-white bg-opacity-75 flex items-center justify-center">
-          <div className="text-gray-600">Cargando...</div>
+        <div className="absolute inset-0 bg-white bg-opacity-90 flex items-center justify-center">
+          <div className="text-sm text-gray-500">Cargando...</div>
         </div>
       )}
       <table className="w-full">
-        <thead className="bg-gray-50">
-          <tr>
-            <th className="px-4 py-3 text-left cursor-pointer hover:bg-gray-100" onClick={handleSort('titulo')}>
-              Título {sortBy === 'titulo' && (sortOrder === 'ASC' ? '↑' : '↓')}
+        <thead>
+          <tr className="border-b border-gray-100">
+            <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:text-gray-900 transition-colors" onClick={handleSort('titulo')}>
+              Título {sortBy === 'titulo' && <span className="ml-1">{sortOrder === 'ASC' ? '↑' : '↓'}</span>}
             </th>
-            <th className="px-4 py-3 text-left cursor-pointer hover:bg-gray-100" onClick={handleSort('autor')}>
-              Autor {sortBy === 'autor' && (sortOrder === 'ASC' ? '↑' : '↓')}
+            <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:text-gray-900 transition-colors" onClick={handleSort('autor')}>
+              Autor {sortBy === 'autor' && <span className="ml-1">{sortOrder === 'ASC' ? '↑' : '↓'}</span>}
             </th>
-            <th className="px-4 py-3 text-left cursor-pointer hover:bg-gray-100" onClick={handleSort('editorial')}>
-              Editorial {sortBy === 'editorial' && (sortOrder === 'ASC' ? '↑' : '↓')}
+            <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:text-gray-900 transition-colors" onClick={handleSort('editorial')}>
+              Editorial {sortBy === 'editorial' && <span className="ml-1">{sortOrder === 'ASC' ? '↑' : '↓'}</span>}
             </th>
-            <th className="px-4 py-3 text-left cursor-pointer hover:bg-gray-100" onClick={handleSort('precio')}>
-              Precio {sortBy === 'precio' && (sortOrder === 'ASC' ? '↑' : '↓')}
+            <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:text-gray-900 transition-colors" onClick={handleSort('precio')}>
+              Precio {sortBy === 'precio' && <span className="ml-1">{sortOrder === 'ASC' ? '↑' : '↓'}</span>}
             </th>
-            <th className="px-4 py-3 text-left cursor-pointer hover:bg-gray-100" onClick={handleSort('genero')}>
-              Género {sortBy === 'genero' && (sortOrder === 'ASC' ? '↑' : '↓')}
+            <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:text-gray-900 transition-colors" onClick={handleSort('genero')}>
+              Género {sortBy === 'genero' && <span className="ml-1">{sortOrder === 'ASC' ? '↑' : '↓'}</span>}
             </th>
-            <th className="px-4 py-3 text-left cursor-pointer hover:bg-gray-100" onClick={handleSort('createdAt')}>
-              Fecha {sortBy === 'createdAt' && (sortOrder === 'ASC' ? '↑' : '↓')}
-            </th>
-            <th className="px-4 py-3 text-left">Acciones</th>
+            <th className="px-6 py-4 text-right text-xs font-medium text-gray-500 uppercase tracking-wider"></th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="divide-y divide-gray-50">
           {books.map((book) => (
-            <tr key={book.id} className="border-t">
-              <td className="px-4 py-3">{book.titulo}</td>
-              <td className="px-4 py-3">{book.autor}</td>
-              <td className="px-4 py-3">{book.editorial}</td>
-              <td className="px-4 py-3">${book.precio}</td>
-              <td className="px-4 py-3">{book.genero}</td>
-              <td className="px-4 py-3">{new Date(book.createdAt).toLocaleDateString()}</td>
-              <td className="px-4 py-3 flex gap-2">
-                <button
-                  onClick={handleEdit(book.id)}
-                  className="text-blue-600 hover:underline"
-                >
-                  Editar
-                </button>
-                <button
-                  onClick={handleDelete(book.id)}
-                  className="text-red-600 hover:underline"
-                >
-                  Eliminar
-                </button>
+            <tr key={book.id} className="hover:bg-gray-50 transition-colors">
+              <td className="px-6 py-4">
+                <div className="font-medium text-gray-900">{book.titulo}</div>
+                <div className="text-sm text-gray-500">{book.disponibilidad ? 'Disponible' : 'Agotado'}</div>
+              </td>
+              <td className="px-6 py-4 text-gray-900">{book.autor}</td>
+              <td className="px-6 py-4 text-gray-600">{book.editorial}</td>
+              <td className="px-6 py-4 font-medium text-gray-900">${book.precio.toLocaleString()}</td>
+              <td className="px-6 py-4">
+                <span className="inline-flex px-2 py-1 text-xs font-medium bg-gray-100 text-gray-800 rounded-full">
+                  {book.genero}
+                </span>
+              </td>
+              <td className="px-6 py-4 text-right">
+                <div className="flex justify-end gap-2">
+                  <button
+                    onClick={handleEdit(book.id)}
+                    className="text-sm text-gray-600 hover:text-gray-900 transition-colors"
+                  >
+                    Editar
+                  </button>
+                  <button
+                    onClick={handleDelete(book.id)}
+                    className="text-sm text-gray-400 hover:text-red-600 transition-colors"
+                  >
+                    Eliminar
+                  </button>
+                </div>
               </td>
             </tr>
           ))}

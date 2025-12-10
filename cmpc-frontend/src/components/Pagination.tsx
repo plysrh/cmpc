@@ -5,29 +5,29 @@ interface PaginationProps {
 }
 
 function Pagination({ currentPage, totalPages, onPageChange }: PaginationProps) {
-  const handlePrev = (value: number) => () => {
-    onPageChange(value - 1);
+  const handlePrev = () => {
+    onPageChange(currentPage - 1);
   };
-  const handleNext = (value: number) => () => {
-    onPageChange(value - 1);
+  const handleNext = () => {
+    onPageChange(currentPage + 1);
   };
 
   return (
-    <div className="mt-4 flex justify-center gap-2">
+    <div className="flex items-center justify-center gap-6">
       <button
-        onClick={handlePrev(currentPage - 1)}
+        onClick={handlePrev}
         disabled={currentPage === 1}
-        className="px-4 py-2 bg-white rounded disabled:opacity-50"
+        className="text-sm text-gray-600 hover:text-gray-900 disabled:text-gray-300 disabled:cursor-not-allowed transition-colors"
       >
         Anterior
       </button>
-      <span className="px-4 py-2">
-        Página {currentPage} de {totalPages}
+      <span className="text-sm text-gray-500">
+        {currentPage} de {totalPages}
       </span>
       <button
-        onClick={handleNext(currentPage + 1)}
+        onClick={handleNext}
         disabled={currentPage === totalPages}
-        className="px-4 py-2 bg-white rounded disabled:opacity-50"
+        className="text-sm text-gray-600 hover:text-gray-900 disabled:text-gray-300 disabled:cursor-not-allowed transition-colors"
       >
         Siguiente
       </button>
